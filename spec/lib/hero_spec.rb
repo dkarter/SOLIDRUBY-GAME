@@ -19,6 +19,13 @@ describe Hero do
 	  	expect(hero.exp).to eq(0)
 	  end
 
+	  it "has default stealth eq to 1" do
+	  	expect(hero.stealth).to eq(1)
+	  end
+
+	  it "is not fleeing by default" do
+	  	expect(hero.fled?).to be_false
+	  end
 	end
 
 	it "can be damaged" do
@@ -49,7 +56,7 @@ describe Hero do
 		expect(hero.health).to eq(5)
 	end
 
-	describe "attack attack" do
+	describe "attack action" do
 		let(:attack_action) { double("attack_action") }
 		let(:hero) { Hero.new actions: { attack: attack_action }  }
 
@@ -63,6 +70,13 @@ describe Hero do
 			hero.activate_action :attack, monster
 		end
 	
+	end
+
+	describe "flee state" do
+	  it "flees from battle" do
+	  	hero.flee
+	  	expect(hero.fled?).to be_true
+	  end
 	end
 
 end
