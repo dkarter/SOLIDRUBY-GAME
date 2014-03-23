@@ -8,6 +8,7 @@ describe AttackAction do
 	let(:monster) { double("monster", toughness: 2, kill: nil, damage: nil) }
 
 	it_behaves_like "action"
+	it_behaves_like "subaction"
 
 	it "has strength for attribute" do
 	  expect(action.attribute).to eq(:strength)
