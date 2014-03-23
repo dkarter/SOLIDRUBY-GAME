@@ -37,3 +37,9 @@ shared_examples "action" do
 
 	end
 end
+
+shared_examples "subaction" do
+	it "should have owner" do
+		expect(action.owner).to eq(hero)
+	end
+end

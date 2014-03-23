@@ -8,21 +8,13 @@ describe AttackAction do
 	let(:monster) { double("monster", toughness: 2, kill: nil, damage: nil) }
 
 	it_behaves_like "action"
-	
-	it "responds to activate message" do
-		expect(action).to respond_to(:activate)
+
+	it "has strength for attribute" do
+	  expect(action.attribute).to eq(:strength)
 	end
 
-	it "has an owner" do
-		expect(action.owner).to eq(hero)
-	end
-
-	describe "activate" do
-	  it "makes strength check against target toughness" do
-	  	dicepool.should_receive(:skill_check).with(hero.strength, monster.toughness)
-	  	action.activate(monster)	
-	  end
-
+	it "has toughness for difficulty" do
+	  expect(action.difficulty).to eq(:toughness)
 	end
 
 	describe "effect" do
@@ -44,6 +36,7 @@ describe AttackAction do
 	  		hero.should_receive(:gain_gold)
 	  	end
 	  end
+
 	  context 'failure' do
 	  	it "damages owner" do
 	  		dicepool.stub(:skill_check).and_return(false)
