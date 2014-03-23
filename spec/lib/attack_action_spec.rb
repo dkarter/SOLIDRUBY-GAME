@@ -7,6 +7,8 @@ describe AttackAction do
 	let(:action) { AttackAction.new hero, dicepool }
 	let(:monster) { double("monster", toughness: 2, kill: nil, damage: nil) }
 
+	it_behaves_like "action"
+	
 	it "responds to activate message" do
 		expect(action).to respond_to(:activate)
 	end

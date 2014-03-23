@@ -20,5 +20,9 @@ class Action
 		end
 	end
 
-	
+	def success
+	end
+
+	def failure
+	end
 end
